@@ -1,0 +1,10 @@
+
+nav a.active {
+    color:red;
+    text-decoration: underline;
+  }
+
+nav a {
+    text-decoration: none;
+    margin-left:8px
+  }

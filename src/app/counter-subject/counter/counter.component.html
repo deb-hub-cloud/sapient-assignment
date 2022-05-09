@@ -1,0 +1,21 @@
+<section class="grid-container">
+    <app-display-counter  class="grid-item"></app-display-counter>
+    <div class="grid-item">
+        <form [formGroup]="counterForm">
+            <label class="display-text" for="timelimit">Enter Time Limit </label>
+            <input type="text" id="timelimit" formControlName="timeLimit" name="timelimit">
+            <div class="error-text"  *ngIf="controls['timeLimit'].errors">
+                <sup>*</sup>Please enter valid counter time
+            </div>
+            <div class="btngrp">
+                <button type="submit" id="startbtn" aria-label="startorpausecounter" class="startbtn" [disabled]="!counterForm.valid" (click)="startPauseTimer()">Start/Pause</button>
+                <button id="resetbtn" aria-label="resetcounter" (click)="reset()">Reset</button>
+            </div>
+        </form>
+        <ul *ngIf="pausedValues" class="count-text">
+            <li *ngFor="let pausedValue of pausedValues">paused at {{pausedValue}}</li>
+        </ul>
+    </div>
+    <app-display-timestamp></app-display-timestamp>
+    <app-display-click-count></app-display-click-count>
+</section>

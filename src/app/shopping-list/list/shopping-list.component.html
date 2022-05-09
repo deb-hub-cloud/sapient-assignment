@@ -1,0 +1,17 @@
+<div class="prod" id="product-list" [ngClass]="grid ? 'grid-view' : 'list-view'">
+  <div class="view">
+    <i class="fa fa-th" id="list-view" role="button" aria-label="listview" [ngClass]="grid ? 'selected' : ''" (click)="grid = true"></i>
+    <i class="fa fa-list" id="grid-view" role="button" aria-label="gridview" [ngClass]="grid ? '' : 'selected'" (click)="grid = false"></i>
+    <select class="custom-dropdown" id="range-selection" aria-label="range-selection" [(ngModel)]="selectedRange">
+      <option *ngFor="let range of priceRanges" value="{{range}}">
+        {{ range }}
+      </option>
+    </select>
+  </div>
+  <div id="product-list"  *ngFor="let product of products | priceFilter: selectedRange:'price'">
+    <div class="item">
+      <h4>{{product.productName}}</h4>
+      <h6>Price: {{product.price}}</h6>
+    </div>
+  </div>
+</div>

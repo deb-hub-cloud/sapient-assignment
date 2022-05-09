@@ -1,0 +1,35 @@
+table {
+  font-size: 16px;
+  border: 1px solid lightgray;
+}
+
+table,
+.td {
+  text-align: left;
+}
+
+.table-header {
+  font-weight: bold;
+  background-color: #9c9797;
+}
+
+.table-header.table-row {
+  border-bottom: 2px solid gray;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.fa {
+  font-size: 16px;
+}

@@ -1,0 +1,10 @@
+
+<ul *ngIf="actionTimes" class="timestamp">
+    <li *ngFor="let time of actionTimes">{{time}}</li>
+</ul>
+<h4 *ngIf="!actionTimes.length">Not started yet</h4>
+
+
+
+
+

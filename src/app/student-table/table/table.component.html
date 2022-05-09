@@ -1,0 +1,51 @@
+<table id="student">
+	<thead class="table-header">
+		<th [sortedList]="students" data-order="notsorted" data-name="name">
+			Name 
+			<i class="my-icon"></i>
+		</th>
+		<th 
+			[sortedList]="students" data-order="notsorted" data-name="class">
+			Class 
+			<i class="my-icon"></i>
+		</th>
+		<th [sortedList]="students" data-order="notsorted" data-name="section">
+			Section 
+			<i class="my-icon"></i>
+		</th>
+		<th [sortedList]="students" data-order="notsorted" data-name="subjectOne">
+			Sub1 
+			<i class="my-icon"></i>
+		</th>
+		<th [sortedList]="students" data-order="notsorted" data-name="subjectTwo">
+			Sub2 
+			<i class="my-icon"></i>
+		</th>
+		<th [sortedList]="students" data-order="notsorted" data-name="subjectThree">
+			Sub3 <i class="my-icon"></i>
+		</th>
+	</thead>
+	<tbody>
+
+		<tr *ngFor="let student of students" class="table-row">
+			<td>
+				{{ student.name }}
+			</td>
+			<td>
+				{{ student.class }}
+			</td>
+			<td>
+				{{ student.section }}
+			</td>
+			<td>
+				{{ student.subjectOne }}
+			</td>
+			<td>
+				{{ student.subjectTwo }}
+			</td>
+			<td>
+				{{ student.subjectThree }}
+			</td>
+		</tr>
+	</tbody>
+</table>

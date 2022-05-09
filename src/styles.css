@@ -1,0 +1,78 @@
+/* You can add global styles to this file, and also import other style files */
+
+.grid-container {
+    display: grid;
+    column-gap: 20px;
+    row-gap: 5px;
+    grid-template-columns: auto auto;
+}
+
+.grid-item {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin-bottom: 60px;
+}
+
+.center-text{
+    text-align: center;
+}
+
+.center{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.timestamp{
+    font-size: .9rem;
+    font-weight: 700;
+    list-style-type:none;;
+}
+
+.event-count{
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.event-name{
+    text-align: center;
+    font-size: 1.0rem;
+    font-weight: 700;
+}
+
+.display-text {
+    margin:1%;
+    font-weight: 700;
+ }
+ 
+ .btngrp{
+     margin-left: 10%;
+     margin-top: 10px;
+     
+ }
+ .startbtn{
+     margin-right: 10px;
+ }
+ 
+ .count-text{
+     font-size: .9rem;
+     font-weight: 700;
+     margin-top: 15px;
+     list-style-type:none;;
+ }
+ 
+ .error-text {
+    margin-left: 25%;
+    color: #E91E63;
+ }
+
+ @media (min-width: 768px){
+    .btngrp {
+        margin-left: 27%;
+    }
+    .startbtn{
+        margin-right: 20px;
+    }
+  }

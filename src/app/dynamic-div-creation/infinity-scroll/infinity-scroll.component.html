@@ -1,0 +1,12 @@
+<div infiniteScroll [infiniteScrollDistance]="0.1" (scrolled)="onScroll()">
+  <div *ngFor="let divNo of dynamicDivs" class="center">
+    <div class="customdiv">
+      <button type="button" name="openDialog" aria-label="openDialog" (click)="openDialog(divNo)">{{ divNo }}</button>
+    </div>
+  </div>
+</div>
+
+<app-dialog [visible]="showDialog" class="center">
+  <h3>{{divNo}} <sup>th</sup> div clicked.</h3> 
+  <button type="button" name="closeDialog" aria-label="closeDialog" (click)="showDialog = !showDialog" class="btn">Close</button>
+</app-dialog>
