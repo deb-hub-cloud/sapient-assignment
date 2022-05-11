@@ -6,7 +6,7 @@ import { SharedData } from '../model/SharedData';
   providedIn: 'root'
 })
 export class CounterService {
-  SharingData: Subject<SharedData> = new Subject<any>();
+  SharingData: Subject<SharedData> = new Subject<SharedData>();
   CounterValue: Subject<number> = new Subject<number>();
   constructor() { }
 }
