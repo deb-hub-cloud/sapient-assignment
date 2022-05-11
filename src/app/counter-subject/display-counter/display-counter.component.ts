@@ -15,7 +15,7 @@ export class DisplayCounterComponent implements OnDestroy {
   private displayCountSubscription!: Subscription;
   
   constructor(private _counterService: CounterService) {
-   this.displayCountSubscription =  this._counterService.SharingData.subscribe((sharedData:SharedData) => {
+   this.displayCountSubscription =  this._counterService.getCounterData().subscribe((sharedData:SharedData) => {
       if(sharedData.time != null){
         clearInterval(this.interval);
         this.timer = sharedData.time;
@@ -32,14 +32,14 @@ export class DisplayCounterComponent implements OnDestroy {
             this.timer--;
           } else {
             clearInterval(this.interval);
-            this._counterService.CounterValue.next(this.timer);
+            this._counterService.sharedCurrenttime(this.timer);
           }
         }, 1000);
       break;
 
       case 'pause' :
         clearInterval(this.interval);
-        this._counterService.CounterValue.next(this.timer);
+        this._counterService.sharedCurrenttime(this.timer);
       break;
     }
   }
