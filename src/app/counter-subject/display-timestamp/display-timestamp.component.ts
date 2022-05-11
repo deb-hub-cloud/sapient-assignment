@@ -14,7 +14,7 @@ export class DisplayTimestampComponent implements OnDestroy {
   private timeStampSubscription!: Subscription;
   
   constructor(private _counterService: CounterService) {
-    this.timeStampSubscription = this._counterService.SharingData.subscribe((sharedData: SharedData) => {
+    this.timeStampSubscription = this._counterService.getCounterData().subscribe((sharedData: SharedData) => {
       this.actionTimes = sharedData.actionTimes;
     });
   }
