@@ -13,7 +13,7 @@ import { CounterService } from "../service/counter.service";
 })
 export class CounterComponent implements OnDestroy,OnInit {
   public counterForm:FormGroup;
-  private counterSubscription!: Subscription;
+  public counterSubscription!: Subscription;
 
   public pausedValues:number[] = [];
   private action:string = '';
@@ -28,7 +28,7 @@ export class CounterComponent implements OnDestroy,OnInit {
   }
 
   public ngOnInit(): void {
-   this.counterSubscription = this._counterService.CounterValue.subscribe((time:number) => {      
+   this.counterSubscription = this._counterService.getCurrentTime().subscribe((time:number) => {      
       if(time != 0){
         this.pausedValues.push(time);
       }else{
@@ -42,7 +42,7 @@ export class CounterComponent implements OnDestroy,OnInit {
     if(this.startCount){
       let pausedTime = `Reset at ${moment().format("DD-MM-YYYY HH:mm:ss")}`;
       this.actionTimes.push(pausedTime);
-      this.sharedData(new SharedData('',0,0,0,this.actionTimes));
+      this._counterService.sharedCounterData(new SharedData('',0,0,0,this.actionTimes));
       this.pausedValues = [];
       this.resetAllCounterCounts();
     }
@@ -71,7 +71,7 @@ export class CounterComponent implements OnDestroy,OnInit {
         break;
       }
       
-      this.sharedData(new SharedData(this.action,this.counterForm.get('timeLimit')?.value,
+      this._counterService.sharedCounterData(new SharedData(this.action,this.counterForm.get('timeLimit')?.value,
                       this.startCount,this.pausedCount,this.actionTimes));
       this.counterForm.reset();
     }
@@ -84,10 +84,6 @@ export class CounterComponent implements OnDestroy,OnInit {
     this.actionTimes = [];
   }
 
-  private sharedData(sharedData:SharedData): void {
-    this._counterService.SharingData.next(sharedData);
-  }
-  
   get controls() :{ [key: string]: AbstractControl }{ 
     return this.counterForm.controls; 
   }
