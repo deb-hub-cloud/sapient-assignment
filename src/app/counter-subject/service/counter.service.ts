@@ -1,12 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { SharedData } from '../model/SharedData';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CounterService {
-  SharingData: Subject<SharedData> = new Subject<SharedData>();
-  CounterValue: Subject<number> = new Subject<number>();
+  private sharingDataSource: Subject<SharedData> = new Subject<SharedData>();
+  private currentTimeSource: Subject<number> = new Subject<number>();
+
   constructor() { }
+
+  public sharedCounterData(data: SharedData) {
+    this.sharingDataSource.next(data)
+  }
+
+  public sharedCurrenttime(time: number) {
+    this.currentTimeSource.next(time)
+  }
+
+  public getCounterData(): Observable<SharedData> {
+    return this.sharingDataSource.asObservable();
+  }
+
+  public getCurrentTime(): Observable<number> {
+    return this.currentTimeSource.asObservable();
+  }
+
 }
