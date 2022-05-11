@@ -15,7 +15,7 @@ export class DisplayClickCountComponent implements OnDestroy {
   private clickCountSubscription!: Subscription;
 
   constructor(private _counterService: CounterService) {
-   this.clickCountSubscription = this._counterService.SharingData.subscribe((sharedData:SharedData) => {
+   this.clickCountSubscription = this._counterService.getCounterData().subscribe((sharedData:SharedData) => {
       this.pausedCount = sharedData.pausedCount;
       this.startCount = sharedData.startCount;
     });
